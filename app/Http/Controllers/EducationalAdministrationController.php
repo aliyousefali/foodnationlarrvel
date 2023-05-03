@@ -22,6 +22,11 @@ class EducationalAdministrationController extends Controller
         //return redirect ('EducationalAdministration-List')->with('data', $data);
         return $data;
     }
+    public  function  getByGovernmentId($id){
+        $data = EducationalAdministration::where('GovernmentId',$id)->get()->toarray();
+        return $data;
+    }
+
     public  function  save(Request $request){
         $request->validate([
             'Name'=>'required',
@@ -47,11 +52,9 @@ class EducationalAdministrationController extends Controller
         $id=$request->id;
         $Name=$request->Name;
         $GovernmentId=$request->GovernmentId;
-        if($request->Status=='on') {
-            $Status =true;
-        }
-        else{
-            $Status =false;
+        $Status =$request->Status;
+        if($Status==null) {
+            $Status =0;
         }
         $ss = EducationalAdministration::where('id',$id)->update([
             'Name'=>$Name,

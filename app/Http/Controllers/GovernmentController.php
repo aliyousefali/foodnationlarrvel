@@ -48,7 +48,7 @@ class GovernmentController extends Controller
         $Name=$request->Name;
         $Status =$request->Status;
         if($Status==null) {
-            $Status =false;
+            $Status =0;
         }
         $ss = government::where('id',$id)->update([
             'Name'=>$Name,

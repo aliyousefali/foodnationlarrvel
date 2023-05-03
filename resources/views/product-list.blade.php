@@ -16,7 +16,7 @@
         <!--begin::Header-->
         <div class="card-header border-0 pt-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label fw-bold fs-3 mb-1">الموزعين </span>
+                <span class="card-label fw-bold fs-3 mb-1">الاصناف </span>
 
             </h3>
             <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
@@ -36,7 +36,7 @@
                                                               fill="currentColor"/>
 													</svg>
 												</span>
-                    <!--end::Svg Icon-->اضافه موزع</a>
+                    <!--end::Svg Icon-->اضافه صنف</a>
             </div>
         </div>
         <!--end::Header-->
@@ -50,9 +50,10 @@
                     <thead>
                     <tr class="fw-bold text-muted">
                         <th class="min-w-150px">الكود</th>
-                        <th class="min-w-200px">اسم الموزع</th>
-                        <th class="min-w-150px"> الايميل</th>
-                        <th class="min-w-150px"> رقم التليفون</th>
+                        <th class="min-w-200px">اسم الصنف</th>
+                        <th class="min-w-150px">التنبيه قبل انتهاء الصلاحية</th>
+                        <th class="min-w-150px">مدة الصلاحية</th>
+                        <th class="min-w-150px">العدد فى الكرتونة</th>
                         <th class="min-w-150px"> الحالة</th>
 
                     </tr>
@@ -71,10 +72,13 @@
                                 </div>
                             </td>
                             <td>
-                                {{$Stu->Email}}
+                                {{$Stu->ExpireAlarm}}
                             </td>
                             <td>
-                                {{$Stu->Phone}}
+                                {{$Stu->ExpireDuration}}
+                            </td>
+                            <td>
+                                {{$Stu->CartonCount}}
                             </td>
                             <td>
                                 @if($Stu->Status==1)
@@ -104,7 +108,7 @@
 																		</span>
                                         <!--end::Svg Icon-->
                                     </a>
-                                    <a href="{{url('Delete-Contractor/'.$Stu->id)}}"
+                                    <a href="{{url('Delete-Product/'.$Stu->id)}}"
                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                                         <span class="svg-icon svg-icon-3">
@@ -149,11 +153,11 @@
             <!--begin::Modal content-->
             <div class="modal-content">
                 <!--begin::Form-->
-                <form class="form" method="post" action="{{url('Save-Contractor')}}" id="kt_modal_new_address_form">
+                <form class="form" method="post" action="{{url('Save-Product')}}" id="kt_modal_new_address_form">
                     <!--begin::Modal header-->
                     <div class="modal-header" id="kt_modal_new_address_header">
                         <!--begin::Modal title-->
-                        <h2>اضافة موزع</h2>
+                        <h2>اضافة صنف</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -181,45 +185,55 @@
                         <!--begin::Input group-->
                         <div class="row mb-5">
 
-                            <div class="col-md-6 fv-row">
+                            <div class="col-md-12 fv-row">
                                 <!--end::Label-->
-                                <label class="required fs-5 fw-semibold mb-2">اسم الموزع </label>
+                                <label class="required fs-5 fw-semibold mb-2">اسم الصنف </label>
                                 <!--end::Label-->
                                 <!--end::Input-->
 
-                                <input type="text" class="form-control form-control-solid"  name="Name" placeholder="اسم الموزع" value="{{old('Name')}}" />
+                                <input type="text" class="form-control form-control-solid"  name="Name" placeholder="اسم الصنف" value="{{old('Name')}}" />
                                 <!--end::Input-->
                                 @error('Name')
                                 <div style="color: red"> هذا الحقل مطلوب</div>
                                 @enderror
                             </div>
+
                             <div class="col-md-6 fv-row">
                                 <!--end::Label-->
-                                <label class="required fs-5 fw-semibold mb-2">الايميل </label>
+                                <label class="required fs-5 fw-semibold mb-2"> مدة الصلاحية </label>
                                 <!--end::Label-->
                                 <!--end::Input-->
 
-                                <input type="text" class="form-control form-control-solid"  name="Email" placeholder=" الايميل" value="{{old('Email')}}" />
+                                <input type="text" class="form-control form-control-solid"  name="ExpireDuration" placeholder=" مدة الصلاحية" value="{{old('ExpireDuration')}}" />
                                 <!--end::Input-->
-                                @error('Email')
+                                @error('ExpireDuration')
                                 <div style="color: red"> هذا الحقل مطلوب</div>
                                 @enderror
                             </div>
                             <div class="col-md-6 fv-row">
                                 <!--end::Label-->
-                                <label class="required fs-5 fw-semibold mb-2">رقم الهاتف </label>
+                                <label class="required fs-5 fw-semibold mb-2">التاريخ قبل انتهاء الصلاحية  </label>
                                 <!--end::Label-->
                                 <!--end::Input-->
 
-                                <input type="text" class="form-control form-control-solid"  name="Phone" placeholder="رقم الهاتف " value="{{old('Phone')}}" />
+                                <input type="text" class="form-control form-control-solid"  name="ExpireAlarm" placeholder="التاريخ قبل انتهاء الصلاحية " value="{{old('ExpireAlarm')}}" />
                                 <!--end::Input-->
-                                @error('Phone')
+                                @error('ExpireAlarm')
                                 <div style="color: red"> هذا الحقل مطلوب</div>
                                 @enderror
                             </div>
+                            <div class="col-md-12 fv-row">
+                                <!--end::Label-->
+                                <label class="required fs-5 fw-semibold mb-2">العدد فى الكرتونة  </label>
+                                <!--end::Label-->
+                                <!--end::Input-->
 
-
-
+                                <input type="text" class="form-control form-control-solid"  name="CartonCount" placeholder="العدد فى الكرتونة " value="{{old('CartonCount')}}" />
+                                <!--end::Input-->
+                                @error('CartonCount')
+                                <div style="color: red"> هذا الحقل مطلوب</div>
+                                @enderror
+                            </div>
                             <!--end::Col-->
                         </div>
                         <!--end::Input group-->
@@ -287,11 +301,11 @@
             <!--begin::Modal content-->
             <div class="modal-content">
                 <!--begin::Form-->
-                <form class="form" method="post" action="{{url('Update-Contractor')}}" id="kt_modal_new_address_form">
+                <form class="form" method="post" action="{{url('Update-Product')}}" id="kt_modal_new_address_form">
                     <!--begin::Modal header-->
                     <div class="modal-header" id="kt_modal_new_address_header">
                         <!--begin::Modal title-->
-                        <h2>تعديل موزع</h2>
+                        <h2>تعديل صنف</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -319,39 +333,13 @@
                         <!--begin::Input group-->
                         <div class="row mb-5">
 
-                            <div class="col-md-6 fv-row">
+                            <div class="col-md-12 fv-row">
                                 <!--end::Label-->
-                                <label class="required fs-5 fw-semibold mb-2">اسم الموزع </label>
-                                <!--end::Label-->
-                                <!--end::Input-->
-
-                                <input type="text" class="form-control form-control-solid"  name="Name" placeholder="اسم الموزع" id="EditName" />
-
-                                <!--end::Input-->
-                                @error('Name')
-                                <div style="color: red"> هذا الحقل مطلوب</div>
-                                @enderror
-                            </div>
-                            <div class="col-md-6 fv-row">
-                                <!--end::Label-->
-                                <label class="required fs-5 fw-semibold mb-2">الايميل </label>
+                                <label class="required fs-5 fw-semibold mb-2">اسم الصنف </label>
                                 <!--end::Label-->
                                 <!--end::Input-->
 
-                                <input type="text" class="form-control form-control-solid"  name="Email" placeholder="الايميل" id="EditEmail" />
-
-                                <!--end::Input-->
-                                @error('Email')
-                                <div style="color: red"> هذا الحقل مطلوب</div>
-                                @enderror
-                            </div>
-                            <div class="col-md-6 fv-row">
-                                <!--end::Label-->
-                                <label class="required fs-5 fw-semibold mb-2">رقم الهاتف </label>
-                                <!--end::Label-->
-                                <!--end::Input-->
-
-                                <input type="text" class="form-control form-control-solid"  name="Phone" placeholder="الهاتف" id="EditPhone" />
+                                <input type="text" class="form-control form-control-solid"  name="Name" placeholder="اسم الصنف" id="EditName" />
 
                                 <!--end::Input-->
                                 @error('Name')
@@ -359,7 +347,42 @@
                                 @enderror
                             </div>
                            <input type="hidden" name="id" id="EditId">
+                            <div class="col-md-6 fv-row">
+                                <!--end::Label-->
+                                <label class="required fs-5 fw-semibold mb-2"> مدة الصلاحية </label>
+                                <!--end::Label-->
+                                <!--end::Input-->
 
+                                <input type="text" class="form-control form-control-solid"  name="ExpireDuration" placeholder=" مدة الصلاحية" id="EditExpireDuration" />
+                                <!--end::Input-->
+                                @error('ExpireDuration')
+                                <div style="color: red"> هذا الحقل مطلوب</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6 fv-row">
+                                <!--end::Label-->
+                                <label class="required fs-5 fw-semibold mb-2">التاريخ قبل انتهاء الصلاحية  </label>
+                                <!--end::Label-->
+                                <!--end::Input-->
+
+                                <input type="text" class="form-control form-control-solid"  name="ExpireAlarm" placeholder="التاريخ قبل انتهاء الصلاحية " id="EditExpireAlarm" />
+                                <!--end::Input-->
+                                @error('ExpireAlarm')
+                                <div style="color: red"> هذا الحقل مطلوب</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-12 fv-row">
+                                <!--end::Label-->
+                                <label class="required fs-5 fw-semibold mb-2">العدد فى الكرتونة  </label>
+                                <!--end::Label-->
+                                <!--end::Input-->
+
+                                <input type="text" class="form-control form-control-solid"  name="CartonCount" placeholder="العدد فى الكرتونة " id="EditCartonCount" />
+                                <!--end::Input-->
+                                @error('CartonCount')
+                                <div style="color: red"> هذا الحقل مطلوب</div>
+                                @enderror
+                            </div>
 
                             <!--end::Col-->
                         </div>
@@ -387,7 +410,7 @@
                                 <label class="form-check form-switch form-check-custom form-check-solid">
                                     <!--begin::Input-->
 
-                                    <input class="form-check-input Status" value="1" name="Status" type="checkbox" id="Status"  />
+                                    <input class="form-check-input Status" name="Status" type="checkbox" id="Status" value="1"  />
                                         <!--end::Input-->
                                     <!--begin::Label-->
                                     <span class="form-check-label fw-semibold text-muted">مفعل</span>
@@ -427,16 +450,18 @@
     function call(id){
     $.ajax({
         type: "GET",
-        url: "Edit-Contractor/"+id,
+        url: "Edit-Product/"+id,
         // The key needs to match your method's input parameter (case-sensitive).
        // data: JSON.stringify({ Markers: markers }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(data){
             $( "#EditName" ).val(data.Name);
-            $( "#EditEmail" ).val(data.Email);
-            $( "#EditPhone" ).val(data.Phone);
             $( "#EditId" ).val(data.id);
+            $( "#EditExpireAlarm" ).val(data.ExpireAlarm);
+            $( "#EditExpireDuration" ).val(data.ExpireDuration);
+            $( "#EditCartonCount" ).val(data.CartonCount);
+
             if(data.Status==1) {
                 $('.Status').prop('checked', true);
             }

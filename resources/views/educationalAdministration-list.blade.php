@@ -252,7 +252,7 @@
                     <!--begin::Modal footer-->
                     <div class="modal-footer flex-center">
                         <!--begin::Button-->
-                        <button type="reset" id="kt_modal_new_address_cancel" class="btn btn-light me-3">الغاء
+                        <button type="reset" data-bs-dismiss="modal" data-mod id="kt_modal_new_address" class="btn btn-light me-3">الغاء
                         </button>
                         <!--end::Button-->
                         <!--begin::Button-->
@@ -366,7 +366,7 @@
                                 <label class="form-check form-switch form-check-custom form-check-solid">
                                     <!--begin::Input-->
 
-                                    <input class="form-check-input" name="Status" type="checkbox" id="EditStatus"  />
+                                    <input class="form-check-input Status" name="Status" value="1" type="checkbox" id="Status"  />
                                     <!--end::Input-->
                                     <!--begin::Label-->
                                     <span class="form-check-label fw-semibold text-muted">مفعل</span>
@@ -383,7 +383,8 @@
                     <!--begin::Modal footer-->
                     <div class="modal-footer flex-center">
                         <!--begin::Button-->
-                        <button type="reset" id="kt_modal_new_address_cancel" class="btn btn-light me-3">الغاء
+
+                        <button type="reset" data-bs-dismiss="modal" id="kt_modal_new_address2" class="btn btn-light me-3">الغاء
                         </button>
                         <!--end::Button-->
                         <!--begin::Button-->
@@ -414,7 +415,12 @@
             success: function(data){
                 $( "#EditName" ).val(data.Name);
                 $( "#EditId" ).val(data.id);
-                $( "#EditStatus" ).val(data.Status);
+                if(data.Status==1) {
+                    $('.Status').prop('checked', true);
+                }
+                else {
+                    $('.Status').prop('checked', false);
+                }
                 $( "#GovernmentId" ).val(data.GovernmentId);
 
             },

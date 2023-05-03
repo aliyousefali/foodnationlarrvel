@@ -44,11 +44,9 @@ class EducationStageController extends Controller
         ]);
         $id=$request->id;
         $Name=$request->Name;
-        if($request->Status=='on') {
-            $Status =true;
-        }
-        else{
-            $Status =false;
+        $Status =$request->Status;
+        if($Status==null) {
+            $Status =0;
         }
         $ss = EducationStage::where('id',$id)->update([
             'Name'=>$Name,

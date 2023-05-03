@@ -977,18 +977,20 @@
                                 <!--end:Menu link-->
                                 <!--begin:Menu sub-->
                                 <div class="menu-sub menu-sub-accordion">
+
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link active" href="../../Meal-List">
+                                        <a class="menu-link active" href="../../Product-List">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-                                            <span class="menu-title">الوجبات</span>
+                                            <span class="menu-title">الاصناف</span>
                                         </a>
                                         <!--end:Menu link-->
                                     </div>
                                     <!--end:Menu item-->
+                                    <!--begin:Menu item-->
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
@@ -1028,11 +1030,47 @@
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
+                                        <a class="menu-link active" href="../../Meal-List">
+													<span class="menu-bullet">
+														<span class="bullet bullet-dot"></span>
+													</span>
+                                            <span class="menu-title">الوجبات</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                    <!--end:Menu item-->
+                                    <!--begin:Menu item-->
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
                                         <a class="menu-link active" href="../../Contractor-List">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
                                             <span class="menu-title"> الموزعين</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                    <!--end:Menu item-->
+                                    <!--begin:Menu item-->
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link active" href="../../School-List">
+													<span class="menu-bullet">
+														<span class="bullet bullet-dot"></span>
+													</span>
+                                            <span class="menu-title"> المدارس</span>
+                                        </a>
+                                        <!--end:Menu link-->
+                                    </div>
+                                    <!--end:Menu item-->
+                                    <!--begin:Menu item-->
+                                    <div class="menu-item">
+                                        <!--begin:Menu link-->
+                                        <a class="menu-link active" href="../../TruckType-List">
+													<span class="menu-bullet">
+														<span class="bullet bullet-dot"></span>
+													</span>
+                                            <span class="menu-title"> انواع السيارات</span>
                                         </a>
                                         <!--end:Menu link-->
                                     </div>

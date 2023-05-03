@@ -6,6 +6,9 @@ use App\Http\Controllers\GovernmentController;
 use App\Http\Controllers\EducationalAdministrationController;
 use App\Http\Controllers\EducationStageController;
 use App\Http\Controllers\ContractorController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\TruckTypeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +41,7 @@ Route::get('EducationalAdministration-List',[EducationalAdministrationController
 Route::get('Add-EducationalAdministration',[EducationalAdministrationController::class,'add']);
 Route::post('Save-EducationalAdministration',[EducationalAdministrationController::class,'save']);
 Route::get('Edit-EducationalAdministration/{id}',[EducationalAdministrationController::class,'edit']);
+Route::get('GetByGovernmentId-EducationalAdministration/{id}',[EducationalAdministrationController::class,'getByGovernmentId']);
 Route::post('Update-EducationalAdministration',[EducationalAdministrationController::class,'update']);
 Route::get('Delete-EducationalAdministration/{id}',[EducationalAdministrationController::class,'delete']);
 
@@ -54,3 +58,21 @@ Route::post('Save-Contractor',[ContractorController::class,'save']);
 Route::get('Edit-Contractor/{id}',[ContractorController::class,'edit']);
 Route::post('Update-Contractor',[ContractorController::class,'update']);
 Route::get('Delete-Contractor/{id}',[ContractorController::class,'delete']);
+
+Route::get('Product-List',[ProductController::class,'index']);
+Route::post('Save-Product',[ProductController::class,'save']);
+Route::get('Edit-Product/{id}',[ProductController::class,'edit']);
+Route::post('Update-Product',[ProductController::class,'update']);
+Route::get('Delete-Product/{id}',[ProductController::class,'delete']);
+
+Route::get('School-List',[SchoolController::class,'index']);
+Route::post('Save-School',[SchoolController::class,'save']);
+Route::get('Edit-School/{id}',[SchoolController::class,'edit']);
+Route::post('Update-School',[SchoolController::class,'update']);
+Route::get('Delete-School/{id}',[SchoolController::class,'delete']);
+
+Route::get('TruckType-List',[TruckTypeController::class,'index']);
+Route::post('Save-TruckType',[TruckTypeController::class,'save']);
+Route::get('Edit-TruckType/{id}',[TruckTypeController::class,'edit']);
+Route::post('Update-TruckType',[TruckTypeController::class,'update']);
+Route::get('Delete-TruckType/{id}',[TruckTypeController::class,'delete']);

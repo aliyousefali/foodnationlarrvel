@@ -52,7 +52,7 @@ class ContractorController extends Controller
         $Phone=$request->Phone;
         $Status =$request->Status;
         if($Status==null) {
-            $Status =false;
+            $Status =0;
         }
         $ss = Contractor::where('id',$id)->update([
             'Name'=>$Name,
